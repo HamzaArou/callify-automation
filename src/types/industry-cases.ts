@@ -1,13 +1,14 @@
-export interface ComplexityLevel {
+export interface UseCase {
   title: string;
   description: string;
-  items: string[];
+  roiStat: string;
+  example: string;
 }
 
-export interface ComplexityLevels {
-  [key: string]: {
-    [key: string]: ComplexityLevel;
-  };
+export interface UseCaseGroup {
+  title: string;
+  description: string;
+  cases: UseCase[];
 }
 
 export interface TestCase {
