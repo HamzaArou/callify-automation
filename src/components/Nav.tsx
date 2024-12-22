@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "./ui/button";
+import Logo from "./Logo";
 
 const Nav = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -25,10 +26,8 @@ const Nav = () => {
       transition={{ duration: 0.5 }}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <div className="flex-shrink-0">
-            <span className="text-xl font-semibold">VoiceAI</span>
-          </div>
+        <div className="flex items-center justify-between h-20">
+          <Logo />
 
           <div className="hidden md:block">
             <div className="ml-10 flex items-center space-x-8">
@@ -41,7 +40,11 @@ const Nav = () => {
               <a href="#demo" className="text-gray-600 hover:text-gray-900 transition-colors">
                 Demo
               </a>
-              <Button variant="default" size="sm">
+              <Button 
+                variant="default"
+                size="lg"
+                className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white"
+              >
                 Try Demo
               </Button>
             </div>
@@ -58,7 +61,6 @@ const Nav = () => {
         </div>
       </div>
 
-      {/* Mobile menu */}
       {isMobileMenuOpen && (
         <motion.div
           className="md:hidden"
@@ -87,7 +89,10 @@ const Nav = () => {
               Demo
             </a>
             <div className="px-3 py-2">
-              <Button className="w-full" variant="default" size="sm">
+              <Button 
+                className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white"
+                size="lg"
+              >
                 Try Demo
               </Button>
             </div>

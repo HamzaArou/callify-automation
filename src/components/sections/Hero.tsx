@@ -11,7 +11,7 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-gray-900 mb-6">
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tight bg-gradient-to-r from-gray-900 via-purple-900 to-gray-900 bg-clip-text text-transparent mb-6">
             Automate Your Calls.
             <br />
             Save Time. Grow Revenue.
@@ -23,7 +23,7 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
             Discover how our AI-driven inbound and outbound voice assistant can free your team from repetitive tasks
             and recapture lost revenue—starting today.
           </p>
@@ -35,11 +35,18 @@ const Hero = () => {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
-          <Button size="lg" className="group">
+          <Button 
+            size="lg" 
+            className="group bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white px-8 py-6 text-lg"
+          >
             Try Our Ready-to-Go Demo
-            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
           </Button>
-          <Button size="lg" variant="outline">
+          <Button 
+            size="lg" 
+            variant="outline"
+            className="px-8 py-6 text-lg border-2"
+          >
             Schedule Consultation
           </Button>
         </motion.div>
