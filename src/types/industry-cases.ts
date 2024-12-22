@@ -15,3 +15,9 @@ export interface TestCase {
   title: string;
   description: string;
 }
+
+export interface ComplexityLevel {
+  title: string;
+  description: string;
+  items: string[];
+}
