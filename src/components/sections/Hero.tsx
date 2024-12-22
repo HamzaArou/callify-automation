@@ -24,7 +24,7 @@ const Hero = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
         >
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            Discover how our AI-driven outbound voice assistant can free your team from repetitive tasks
+            Discover how our AI-driven inbound and outbound voice assistant can free your team from repetitive tasks
             and recapture lost revenue—starting today.
           </p>
         </motion.div>
