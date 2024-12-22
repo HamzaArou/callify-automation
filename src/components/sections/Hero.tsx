@@ -19,7 +19,7 @@ const Hero = () => {
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight bg-gradient-to-r from-gray-900 via-purple-900 to-gray-900 bg-clip-text text-transparent mb-6">
             AI Voice Calls Made Easy—
             <br />
-            Test Our Assistant in Your Business Risk-Free
+            Test Our Assistant, Risk-Free
           </h1>
         </motion.div>
 
@@ -28,11 +28,8 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <p className="text-xl text-gray-600 mb-4 max-w-2xl mx-auto leading-relaxed">
-            Streamline inbound queries, automate outbound follow-ups, and save hours every week—starting with our low-risk, ready-to-test demo.
-          </p>
-          <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-            We've prepared proven test cases that fit your exact business needs—no complex setup, no high costs.
+          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+            Automate inbound queries and outbound follow-ups in minutes. Save hours on repetitive calls, capture more revenue, and streamline customer interactions—no complex setup, no extra costs. Ready to see it in action? Test our AI voice assistant now and experience instant results for your business.
           </p>
         </motion.div>
 
