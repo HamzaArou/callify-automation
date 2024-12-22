@@ -1,10 +1,12 @@
 import { motion } from "framer-motion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { PhoneOutgoing, PhoneIncoming, ArrowUp, ArrowDown, CheckCircle } from "lucide-react";
+import { PhoneOutgoing, PhoneIncoming } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ComplexityLevels, TestCase } from "@/types/industry-cases";
+import { ComplexityLevelAccordion } from "./industry-cases/ComplexityLevelAccordion";
+import { TestCaseCard } from "./industry-cases/TestCaseCard";
 
-const complexityLevels = {
+const complexityLevels: ComplexityLevels = {
   outbound: {
     low: {
       title: "Low Complexity",
@@ -65,7 +67,7 @@ const complexityLevels = {
   }
 };
 
-const testCases = [
+const testCases: TestCase[] = [
   {
     title: "Overdue Invoice Reminders",
     description: "Launch a small outbound campaign to a handful of overdue accounts to prove immediate results."
@@ -126,43 +128,12 @@ const IndustryTestCases = () => {
               <TabsContent key={type} value={type}>
                 <div className="space-y-6">
                   {Object.entries(complexityLevels[type]).map(([level, data]) => (
-                    <motion.div
+                    <ComplexityLevelAccordion
                       key={level}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden"
-                    >
-                      <Accordion type="single" collapsible>
-                        <AccordionItem value={`${type}-${level}`}>
-                          <AccordionTrigger className="px-6 py-4 hover:no-underline">
-                            <div className="flex items-center gap-3">
-                              {level === "low" ? (
-                                <ArrowDown className="w-5 h-5 text-green-500" />
-                              ) : level === "mid" ? (
-                                <ArrowUp className="w-5 h-5 text-yellow-500" />
-                              ) : (
-                                <ArrowUp className="w-5 h-5 text-red-500" />
-                              )}
-                              <div className="text-left">
-                                <h3 className="text-lg font-semibold">{data.title}</h3>
-                                <p className="text-sm text-gray-500">{data.description}</p>
-                              </div>
-                            </div>
-                          </AccordionTrigger>
-                          <AccordionContent className="px-6 pb-4">
-                            <ul className="space-y-3">
-                              {data.items.map((item, index) => (
-                                <li key={index} className="flex items-start gap-3">
-                                  <CheckCircle className="w-5 h-5 text-green-500 mt-1 flex-shrink-0" />
-                                  <span className="text-gray-700">{item}</span>
-                                </li>
-                              ))}
-                            </ul>
-                          </AccordionContent>
-                        </AccordionItem>
-                      </Accordion>
-                    </motion.div>
+                      level={level}
+                      data={data}
+                      type={type}
+                    />
                   ))}
                 </div>
               </TabsContent>
@@ -180,19 +151,7 @@ const IndustryTestCases = () => {
           <h3 className="text-2xl font-bold mb-6 text-center">Ready-to-Test Use Cases</h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {testCases.map((testCase, index) => (
-              <div
-                key={index}
-                className="bg-white/10 backdrop-blur-sm rounded-lg p-6 hover:bg-white/20 transition-colors"
-              >
-                <h4 className="text-lg font-semibold mb-3">{testCase.title}</h4>
-                <p className="text-gray-300 text-sm mb-4">{testCase.description}</p>
-                <Button
-                  variant="secondary"
-                  className="w-full bg-white text-gray-900 hover:bg-gray-100"
-                >
-                  Launch Quick Test
-                </Button>
-              </div>
+              <TestCaseCard key={index} testCase={testCase} />
             ))}
           </div>
         </motion.div>
