@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 import Hero from "@/components/sections/Hero";
 import VideoSection from "@/components/sections/VideoSection";
+import IndustryTestCases from "@/components/sections/IndustryTestCases";
 import Benefits from "@/components/sections/Benefits";
 import HowItWorks from "@/components/sections/HowItWorks";
-import IndustryTestCases from "@/components/sections/IndustryTestCases";
 import ValueProposition from "@/components/sections/ValueProposition";
 import Demo from "@/components/sections/Demo";
 import Testimonials from "@/components/sections/Testimonials";
@@ -18,9 +18,9 @@ const Index = () => {
       <main className="relative">
         <Hero />
         <VideoSection />
+        <IndustryTestCases />
         <Benefits />
         <HowItWorks />
-        <IndustryTestCases />
         <ValueProposition />
         <Demo />
         <Testimonials />
