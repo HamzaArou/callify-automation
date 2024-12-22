@@ -16,9 +16,9 @@ const Index = () => {
       <Nav />
       <main className="container mx-auto px-4 sm:px-6 lg:px-8">
         <Hero />
+        <VideoSection />
         <HowItWorks />
         <Stats />
-        <VideoSection />
         <Testimonials />
         <Demo />
       </main>
