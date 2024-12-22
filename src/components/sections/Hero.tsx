@@ -1,20 +1,25 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Play } from "lucide-react";
 
 const Hero = () => {
+  const scrollToVideo = () => {
+    const element = document.getElementById("video-section");
+    element?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <section className="pt-32 pb-16 md:pt-40 md:pb-20">
-      <div className="text-center max-w-4xl mx-auto">
+      <div className="text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight bg-gradient-to-r from-gray-900 via-purple-900 to-gray-900 bg-clip-text text-transparent mb-6">
-            Automate Your Calls.
+            AI Voice Calls Made Easy—
             <br />
-            Save Time. Grow Revenue.
+            Test Our Assistant in Your Business Risk-Free
           </h1>
         </motion.div>
 
@@ -23,9 +28,11 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
-            Discover how our AI-driven inbound and outbound voice assistant can free your team from repetitive tasks
-            and recapture lost revenue—starting today.
+          <p className="text-xl text-gray-600 mb-4 max-w-2xl mx-auto leading-relaxed">
+            Streamline inbound queries, automate outbound follow-ups, and save hours every week—starting with our low-risk, ready-to-test demo.
+          </p>
+          <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+            We've prepared proven test cases that fit your exact business needs—no complex setup, no high costs.
           </p>
         </motion.div>
 
@@ -39,15 +46,17 @@ const Hero = () => {
             size="lg" 
             className="group bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white px-8 py-6 text-lg"
           >
-            Try Our Ready-to-Go Demo
+            Test It Free Now
             <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
           </Button>
           <Button 
             size="lg" 
             variant="outline"
-            className="px-8 py-6 text-lg border-2"
+            className="px-8 py-6 text-lg border-2 group"
+            onClick={scrollToVideo}
           >
-            Schedule Consultation
+            See How It Works
+            <Play className="ml-2 h-5 w-5 transition-transform group-hover:scale-110" />
           </Button>
         </motion.div>
       </div>

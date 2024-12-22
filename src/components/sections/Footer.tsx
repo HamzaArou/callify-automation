@@ -6,9 +6,9 @@ const Footer = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-gray-900">VoiceAI</h3>
+            <h3 className="text-lg font-semibold text-gray-900">Stepwell Agency</h3>
             <p className="text-gray-600">
-              Automating business communications with AI-powered voice technology
+              Transforming business communications with AI-powered voice technology
             </p>
           </div>
 
@@ -26,7 +26,7 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="#pricing" className="text-gray-600 hover:text-gray-900 transition-colors">
+                <a href="#pricing"className="text-gray-600 hover:text-gray-900 transition-colors">
                   Pricing
                 </a>
               </li>
@@ -73,7 +73,7 @@ const Footer = () => {
 
         <div className="mt-12 pt-8 border-t border-gray-200">
           <p className="text-center text-gray-600">
-            © {new Date().getFullYear()} VoiceAI. All rights reserved.
+            © {new Date().getFullYear()} Stepwell Agency. All rights reserved.
           </p>
         </div>
       </div>

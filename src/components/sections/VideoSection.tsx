@@ -7,22 +7,21 @@ const VideoSection = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <section className="py-16 bg-gray-50">
+    <section id="video-section" className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4">See What You Can Achieve</h2>
+          <h2 className="text-3xl font-bold mb-4">See How It Works</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Watch our quick demo to see how our AI-powered calling system automates your inbound and outbound communications inside your business.
+            Watch our 2-minute demo to see how our AI-powered calling system transforms your business communications
           </p>
         </div>
 
         <div className="relative max-w-4xl mx-auto rounded-xl overflow-hidden shadow-2xl">
           <div 
-            className="aspect-video bg-gray-900 relative cursor-pointer group"
+            className="aspect-video bg-gradient-to-br from-purple-900 to-indigo-900 relative cursor-pointer group"
             onClick={() => setIsOpen(true)}
           >
-            {/* Replace this with your video thumbnail */}
-            <div className="absolute inset-0 bg-gradient-to-br from-purple-600/20 to-blue-600/20 group-hover:opacity-75 transition-opacity" />
+            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors" />
             <Button
               variant="secondary"
               size="lg"
@@ -37,7 +36,6 @@ const VideoSection = () => {
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
           <DialogContent className="max-w-4xl p-0">
             <div className="aspect-video">
-              {/* Replace the src with your actual video URL */}
               <iframe
                 className="w-full h-full"
                 src="https://www.youtube.com/embed/your-video-id"
