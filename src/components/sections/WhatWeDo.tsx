@@ -21,6 +21,13 @@ const benefits = [
 ];
 
 const WhatWeDo = () => {
+  const scrollToDemo = () => {
+    const demoSection = document.getElementById('demo');
+    if (demoSection) {
+      demoSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="py-24 bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -31,6 +38,7 @@ const WhatWeDo = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
+            className="text-center lg:text-left"
           >
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
               What We Do
@@ -46,6 +54,7 @@ const WhatWeDo = () => {
             </p>
             <Button 
               size="lg"
+              onClick={scrollToDemo}
               className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white"
             >
               Try It Now
