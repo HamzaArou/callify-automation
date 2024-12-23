@@ -16,6 +16,14 @@ const Nav = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+      setIsMobileMenuOpen(false);
+    }
+  };
+
   return (
     <motion.nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -31,9 +39,12 @@ const Nav = () => {
 
           <div className="hidden md:block">
             <div className="ml-10 flex items-center space-x-8">
-              <a href="#how-it-works" className="text-gray-600 hover:text-gray-900 transition-colors">
+              <button 
+                onClick={() => scrollToSection('how-it-works')} 
+                className="text-gray-600 hover:text-gray-900 transition-colors"
+              >
                 How It Works
-              </a>
+              </button>
               <a href="#testimonials" className="text-gray-600 hover:text-gray-900 transition-colors">
                 Testimonials
               </a>
@@ -70,12 +81,12 @@ const Nav = () => {
           transition={{ duration: 0.2 }}
         >
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white shadow-lg">
-            <a
-              href="#how-it-works"
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+            <button
+              onClick={() => scrollToSection('how-it-works')}
+              className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
             >
               How It Works
-            </a>
+            </button>
             <a
               href="#testimonials"
               className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
