@@ -92,25 +92,6 @@ const hybridCases: UseCase[] = [
   }
 ];
 
-const testCases: TestCase[] = [
-  {
-    title: "Outbound Payment Reminder Demo",
-    description: "Launch a small campaign to overdue accounts and see immediate results."
-  },
-  {
-    title: "Inbound Call Routing Trial",
-    description: "Test how efficiently our AI directs calls to the right department."
-  },
-  {
-    title: "Hybrid Support Experience",
-    description: "See how we handle support tickets and automate follow-ups."
-  },
-  {
-    title: "Custom Demo",
-    description: "Let us create a tailored demo for your specific needs."
-  }
-];
-
 const UseCaseCard = ({ useCase }: { useCase: UseCase }) => (
   <Card className="p-6 bg-white shadow-sm hover:shadow-md transition-shadow">
     <h4 className="text-lg font-semibold mb-2">{useCase.title}</h4>
@@ -192,30 +173,6 @@ const IndustryTestCases = () => {
               </div>
             </TabsContent>
           </Tabs>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-8 text-white"
-        >
-          <h3 className="text-2xl font-bold mb-6 text-center">Ready to Test These Scenarios?</h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {testCases.map((testCase, index) => (
-              <div key={index} className="bg-white/10 backdrop-blur-sm rounded-lg p-6 hover:bg-white/20 transition-colors">
-                <h4 className="text-lg font-semibold mb-3">{testCase.title}</h4>
-                <p className="text-gray-300 text-sm mb-4">{testCase.description}</p>
-                <Button
-                  variant="secondary"
-                  className="w-full bg-white text-gray-900 hover:bg-gray-100"
-                >
-                  Start Free Trial
-                </Button>
-              </div>
-            ))}
-          </div>
         </motion.div>
 
         <motion.div
