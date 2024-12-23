@@ -44,7 +44,7 @@ const HowItWorks = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {steps.map((step, index) => {
             const Icon = step.icon;
             return (
@@ -71,24 +71,6 @@ const HowItWorks = () => {
             );
           })}
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="text-center"
-        >
-          <h3 className="text-2xl font-bold text-gray-900 mb-6">
-            Ready to Transform Your Calls?
-          </h3>
-          <Button
-            size="lg"
-            className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-6 text-lg h-auto"
-          >
-            Book a Demo
-          </Button>
-        </motion.div>
       </div>
     </section>
   );
