@@ -9,6 +9,7 @@ import Testimonials from "@/components/sections/Testimonials";
 import FAQ from "@/components/sections/FAQ";
 import Footer from "@/components/sections/Footer";
 import Nav from "@/components/Nav";
+import HowItWorks from "@/components/sections/HowItWorks";
 
 const Index = () => {
   return (
@@ -18,6 +19,7 @@ const Index = () => {
         <Hero />
         <WhatWeDo />
         <IndustryTestCases />
+        <HowItWorks />
         <Benefits />
         <ValueProposition />
         <Demo />
