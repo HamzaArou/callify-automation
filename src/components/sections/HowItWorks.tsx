@@ -5,22 +5,22 @@ import { Button } from "@/components/ui/button";
 const steps = [
   {
     icon: MessageSquare,
-    title: "Quick Discovery",
+    title: "1. Quick Discovery",
     description: "We discuss your biggest call-related challenges—outbound payments, inbound routing, you name it. This quick call lets us map the perfect AI solution.",
   },
   {
     icon: Cpu,
-    title: "Custom Build",
+    title: "2. Custom Build",
     description: "Our team configures a tailored AI voice assistant, ready to handle your specific tasks—no complex setup required.",
   },
   {
     icon: Rocket,
-    title: "Rapid Testing & Launch",
+    title: "3. Rapid Testing & Launch",
     description: "We demo the solution, you give a thumbs-up, and we go live. Within days, you'll see immediate time-savings and improved call efficiency.",
   },
   {
     icon: BarChart3,
-    title: "Fine-Tuning & Scale",
+    title: "4. Fine-Tuning & Scale",
     description: "Need more features or to expand across departments? We refine as needed, ensuring ongoing success and ROI.",
   },
 ];
