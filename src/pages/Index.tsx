@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import Hero from "@/components/sections/Hero";
-import VideoSection from "@/components/sections/VideoSection";
 import IndustryTestCases from "@/components/sections/IndustryTestCases";
 import Benefits from "@/components/sections/Benefits";
 import WhatWeDo from "@/components/sections/WhatWeDo";
@@ -17,7 +16,6 @@ const Index = () => {
       <Nav />
       <main className="relative">
         <Hero />
-        <VideoSection />
         <WhatWeDo />
         <IndustryTestCases />
         <Benefits />
