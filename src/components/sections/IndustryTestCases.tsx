@@ -174,21 +174,6 @@ const IndustryTestCases = () => {
             </TabsContent>
           </Tabs>
         </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="mt-16 text-center"
-        >
-          <p className="text-lg text-gray-600 max-w-4xl mx-auto mb-8">
-            Ready to see how these AI scenarios fit your business? We've prepared pre-built test cases—no complex setup required.
-          </p>
-          <Button size="lg" className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
-            Try a Free Outbound Demo
-          </Button>
-        </motion.div>
       </div>
     </section>
   );
