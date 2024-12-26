@@ -1,22 +1,13 @@
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 
 const Hero = () => {
-  const [currentService, setCurrentService] = useState<"AI Assistant" | "New Website">("AI Assistant");
   const [phoneNumber, setPhoneNumber] = useState("");
   const { toast } = useToast();
-
-  // Rotate service text
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentService(prev => prev === "AI Assistant" ? "New Website" : "AI Assistant");
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
 
   const handleSubmit = () => {
     if (!phoneNumber || phoneNumber.length < 10) {
@@ -35,10 +26,6 @@ const Hero = () => {
     });
     setPhoneNumber("");
   };
-
-  const tooltipText = currentService === "AI Assistant" 
-    ? "Automate inbound/outbound calls and boost conversions"
-    : "Elevate your online presence with a modern, custom rebuild";
 
   return (
     <section className="pt-32 pb-16 md:pt-40 md:pb-20">
@@ -87,27 +74,14 @@ const Hero = () => {
             />
           </div>
           
-          <div className="relative group w-full md:w-auto">
+          <div className="w-full md:w-auto">
             <Button 
               size="lg" 
               onClick={handleSubmit}
               className="w-full md:w-auto group bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white !px-8 !py-6 text-lg relative whitespace-nowrap h-[52px]"
             >
-              Build My{" "}
-              <motion.span
-                key={currentService}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.3 }}
-                className="text-[#ff914d] font-semibold"
-              >
-                {currentService}
-              </motion.span>
+              Build My AI Assistant
             </Button>
-            <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 w-64 bg-black text-white text-sm rounded-md py-2 px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              {tooltipText}
-            </div>
           </div>
         </motion.div>
       </div>
