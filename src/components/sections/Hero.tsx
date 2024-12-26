@@ -72,6 +72,9 @@ const Hero = () => {
           className="flex flex-col md:flex-row justify-center items-center gap-4 max-w-2xl mx-auto"
         >
           <div className="w-full md:w-[300px]">
+            <label htmlFor="phone" className="block text-sm font-medium text-gray-700 text-left mb-2">
+              Enter your phone number
+            </label>
             <PhoneInput
               country={"us"}
               value={phoneNumber}
