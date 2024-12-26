@@ -1,12 +1,57 @@
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Play } from "lucide-react";
+import { useToast } from "@/components/ui/use-toast";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 
 const Hero = () => {
-  const scrollToVideo = () => {
-    const element = document.getElementById("video-section");
-    element?.scrollIntoView({ behavior: "smooth" });
+  const [currentService, setCurrentService] = useState<"AI Assistant" | "New Website">("AI Assistant");
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const { toast } = useToast();
+
+  // Rotate service text
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentService(prev => prev === "AI Assistant" ? "New Website" : "AI Assistant");
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const handleButtonClick = () => {
+    setIsDialogOpen(true);
   };
+
+  const handleSubmit = () => {
+    if (!phoneNumber || phoneNumber.length < 10) {
+      toast({
+        variant: "destructive",
+        title: "Invalid Phone Number",
+        description: "Please enter a valid phone number with country code.",
+      });
+      return;
+    }
+
+    // Here you would typically send the phone number to your backend
+    console.log("Submitted phone:", phoneNumber);
+    toast({
+      title: "Success!",
+      description: "We'll contact you shortly to discuss your project.",
+    });
+    setIsDialogOpen(false);
+  };
+
+  const tooltipText = currentService === "AI Assistant" 
+    ? "Automate inbound/outbound calls and boost conversions"
+    : "Elevate your online presence with a modern, custom rebuild";
 
   return (
     <section className="pt-32 pb-16 md:pt-40 md:pb-20">
@@ -29,7 +74,7 @@ const Hero = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
         >
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
-            Automate inbound queries and outbound follow-ups in minutes. Save hours on repetitive calls, capture more revenue, and streamline customer interactions—no complex setup, no extra costs. Ready to see it in action? Test our AI voice assistant now and experience instant results for your business.
+            Automate inbound queries and outbound follow-ups in minutes. Save hours on repetitive calls, capture more revenue, and streamline customer interactions—no complex setup, no extra costs.
           </p>
         </motion.div>
 
@@ -37,26 +82,55 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          className="flex justify-center"
         >
-          <Button 
-            size="lg" 
-            className="group bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white px-8 py-6 text-lg"
-          >
-            Test It Free Now
-            <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-          </Button>
-          <Button 
-            size="lg" 
-            variant="outline"
-            className="px-8 py-6 text-lg border-2 group"
-            onClick={scrollToVideo}
-          >
-            See How It Works
-            <Play className="ml-2 h-5 w-5 transition-transform group-hover:scale-110" />
-          </Button>
+          <div className="relative group">
+            <Button 
+              size="lg" 
+              onClick={handleButtonClick}
+              className="group bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white px-8 py-6 text-lg relative"
+            >
+              Build My{" "}
+              <motion.span
+                key={currentService}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3 }}
+              >
+                {currentService}
+              </motion.span>
+            </Button>
+            <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 w-64 bg-black text-white text-sm rounded-md py-2 px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              {tooltipText}
+            </div>
+          </div>
         </motion.div>
       </div>
+
+      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle>Enter Your Phone Number</DialogTitle>
+            <DialogDescription>
+              We'll contact you to discuss building your {currentService.toLowerCase()}.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="grid gap-4 py-4">
+            <PhoneInput
+              country={"us"}
+              value={phoneNumber}
+              onChange={(phone) => setPhoneNumber(phone)}
+              containerClass="w-full"
+              inputClass="w-full p-2 border rounded-md"
+              buttonClass="border rounded-l-md"
+            />
+            <Button onClick={handleSubmit} className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white">
+              Submit
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };
