@@ -56,7 +56,7 @@ const Nav = () => {
                 size="lg"
                 className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white"
               >
-                Try Demo
+                Get a Proposal
               </Button>
             </div>
           </div>
@@ -104,7 +104,7 @@ const Nav = () => {
                 className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white"
                 size="lg"
               >
-                Try Demo
+                Get a Proposal
               </Button>
             </div>
           </div>
