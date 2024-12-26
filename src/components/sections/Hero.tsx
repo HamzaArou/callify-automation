@@ -2,19 +2,11 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-} from "@/components/ui/dialog";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 
 const Hero = () => {
   const [currentService, setCurrentService] = useState<"AI Assistant" | "New Website">("AI Assistant");
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState("");
   const { toast } = useToast();
 
@@ -77,24 +69,25 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="flex flex-col md:flex-row justify-center items-center gap-4"
+          className="flex flex-col md:flex-row justify-center items-center gap-4 max-w-2xl mx-auto"
         >
-          <div className="w-full md:w-64">
+          <div className="w-full md:w-[400px]">
             <PhoneInput
               country={"us"}
               value={phoneNumber}
               onChange={(phone) => setPhoneNumber(phone)}
               containerClass="w-full"
-              inputClass="w-full p-2 border rounded-md"
-              buttonClass="border rounded-l-md"
+              inputClass="!w-full !h-[52px] !text-lg"
+              buttonClass="!h-[52px]"
+              placeholder="Enter your phone number"
             />
           </div>
           
-          <div className="relative group">
+          <div className="relative group w-full md:w-auto">
             <Button 
               size="lg" 
               onClick={handleSubmit}
-              className="group bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white px-8 py-6 text-lg relative whitespace-nowrap"
+              className="w-full md:w-auto group bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white !px-8 !py-6 text-lg relative whitespace-nowrap h-[52px]"
             >
               Build My{" "}
               <motion.span
