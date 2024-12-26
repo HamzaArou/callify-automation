@@ -26,8 +26,7 @@ const Hero = () => {
       description: "We'll be in touch soon!",
     });
     
-    setPhoneNumber("");
-    navigate('/proposal');
+    navigate('/proposal', { state: { phoneNumber } });
   };
 
   return (

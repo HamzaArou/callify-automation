@@ -7,14 +7,18 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import { useLocation } from "react-router-dom";
 
 const ProposalForm = () => {
+  const location = useLocation();
+  const initialPhoneNumber = location.state?.phoneNumber || "";
+
   const [formData, setFormData] = useState({
     name: "",
     company: "",
     industry: "",
     email: "",
-    phone: "",
+    phone: initialPhoneNumber,
     website: "",
     useCase: "",
     timing: "",
