@@ -50,20 +50,22 @@ const Hero = () => {
           </p>
           
           <div className="flex flex-col md:flex-row gap-4 w-full max-w-lg">
-            <PhoneInput
-              country={"us"}
-              value={phoneNumber}
-              onChange={setPhoneNumber}
-              inputStyle={{
-                width: "100%",
-                height: "52px",
-                fontSize: "1.125rem",
-                backgroundColor: "white"
-              }}
-              inputProps={{
-                placeholder: "Enter your phone number"
-              }}
-            />
+            <div className="w-[300px] mx-auto">
+              <PhoneInput
+                country={"us"}
+                value={phoneNumber}
+                onChange={setPhoneNumber}
+                inputStyle={{
+                  width: "100%",
+                  height: "52px",
+                  fontSize: "1.125rem",
+                  backgroundColor: "white"
+                }}
+                inputProps={{
+                  placeholder: "Enter your phone number"
+                }}
+              />
+            </div>
           </div>
           
           <div className="w-full md:w-auto">
