@@ -96,7 +96,7 @@ const Hero = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.3 }}
-                className={currentService === "AI Assistant" ? "text-purple-300" : "text-orange-300"}
+                className="text-purple-300"
               >
                 {currentService}
               </motion.span>
