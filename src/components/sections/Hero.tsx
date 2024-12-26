@@ -96,7 +96,7 @@ const Hero = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.3 }}
-                className="text-[#8B5CF6] font-semibold"
+                className="text-[#561C84] font-semibold"
               >
                 {currentService}
               </motion.span>
