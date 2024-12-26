@@ -80,7 +80,6 @@ const Hero = () => {
               inputClass="!w-full !h-[52px] !text-lg"
               buttonClass="!h-[52px]"
               placeholder="Enter your phone"
-              required
             />
           </div>
           
