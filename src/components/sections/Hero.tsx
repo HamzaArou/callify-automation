@@ -4,72 +4,64 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const { toast } = useToast();
+  const navigate = useNavigate();
 
   const handleSubmit = () => {
     if (!phoneNumber || phoneNumber.length < 10) {
       toast({
         variant: "destructive",
-        title: "Phone Number Required",
-        description: "Please enter a valid phone number to continue.",
+        title: "Invalid phone number",
+        description: "Please enter a valid phone number to continue",
       });
       return;
     }
 
-    console.log("Submitted phone:", phoneNumber);
     toast({
       title: "Success!",
-      description: "We'll contact you shortly to discuss your project.",
+      description: "We'll be in touch soon!",
     });
+    
     setPhoneNumber("");
+    navigate('/proposal');
   };
 
   return (
     <section className="pt-32 pb-16 md:pt-40 md:pb-20">
-      <div className="text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container px-4 mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
+          className="flex flex-col items-center gap-8 text-center"
         >
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight bg-gradient-to-r from-gray-900 via-purple-900 to-gray-900 bg-clip-text text-transparent mb-6">
-            AI Voice Calls Made Easy—
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
+            Get More Leads with an
             <br />
-            Test Our Assistant, Risk-Free
+            AI-Powered Sales Team
           </h1>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
-            Automate inbound queries and outbound follow-ups in minutes. Save hours on repetitive calls, capture more revenue, and streamline customer interactions—no complex setup, no extra costs.
+          
+          <p className="text-xl md:text-2xl text-muted-foreground max-w-[800px]">
+            Our AI assistant handles your outbound calls 24/7, booking meetings and qualifying leads while you focus on closing deals.
           </p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="flex flex-col md:flex-row justify-center items-center gap-4 max-w-2xl mx-auto"
-        >
-          <div className="w-full md:w-[300px]">
+          
+          <div className="flex flex-col md:flex-row gap-4 w-full max-w-lg">
             <PhoneInput
               country={"us"}
               value={phoneNumber}
-              onChange={(phone) => setPhoneNumber(phone)}
-              containerClass="w-full"
-              inputClass="!w-full !h-[52px] !text-lg !placeholder-gray-500"
-              buttonClass="!h-[52px]"
-              placeholder="Enter your phone number"
+              onChange={setPhoneNumber}
+              inputStyle={{
+                width: "100%",
+                height: "52px",
+                fontSize: "1.125rem",
+                backgroundColor: "white"
+              }}
               inputProps={{
-                placeholder: "Enter your phone number",
-                style: { fontSize: '1.125rem', color: '#374151' }
+                placeholder: "Enter your phone number"
               }}
             />
           </div>
