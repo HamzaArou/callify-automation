@@ -22,8 +22,8 @@ const Hero = () => {
     if (!phoneNumber || phoneNumber.length < 10) {
       toast({
         variant: "destructive",
-        title: "Invalid Phone Number",
-        description: "Please enter a valid phone number with country code.",
+        title: "Phone Number Required",
+        description: "Please enter a valid phone number to continue.",
       });
       return;
     }
@@ -71,7 +71,7 @@ const Hero = () => {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="flex flex-col md:flex-row justify-center items-center gap-4 max-w-2xl mx-auto"
         >
-          <div className="w-full md:w-[400px]">
+          <div className="w-full md:w-[300px]">
             <PhoneInput
               country={"us"}
               value={phoneNumber}
@@ -79,7 +79,8 @@ const Hero = () => {
               containerClass="w-full"
               inputClass="!w-full !h-[52px] !text-lg"
               buttonClass="!h-[52px]"
-              placeholder="Enter your phone number"
+              placeholder="Enter your phone"
+              required
             />
           </div>
           

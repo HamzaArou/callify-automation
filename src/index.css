@@ -136,3 +136,9 @@
 .react-tel-input .flag-dropdown {
   border-radius: 0.375rem 0 0 0.375rem !important;
 }
+
+/* Placeholder styling */
+.react-tel-input .form-control::placeholder {
+  color: #6b7280;
+  opacity: 1;
+}
