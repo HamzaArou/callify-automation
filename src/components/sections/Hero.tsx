@@ -26,10 +26,6 @@ const Hero = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const handleButtonClick = () => {
-    setIsDialogOpen(true);
-  };
-
   const handleSubmit = () => {
     if (!phoneNumber || phoneNumber.length < 10) {
       toast({
@@ -40,13 +36,12 @@ const Hero = () => {
       return;
     }
 
-    // Here you would typically send the phone number to your backend
     console.log("Submitted phone:", phoneNumber);
     toast({
       title: "Success!",
       description: "We'll contact you shortly to discuss your project.",
     });
-    setIsDialogOpen(false);
+    setPhoneNumber("");
   };
 
   const tooltipText = currentService === "AI Assistant" 
@@ -82,13 +77,24 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="flex justify-center"
+          className="flex flex-col md:flex-row justify-center items-center gap-4"
         >
+          <div className="w-full md:w-64">
+            <PhoneInput
+              country={"us"}
+              value={phoneNumber}
+              onChange={(phone) => setPhoneNumber(phone)}
+              containerClass="w-full"
+              inputClass="w-full p-2 border rounded-md"
+              buttonClass="border rounded-l-md"
+            />
+          </div>
+          
           <div className="relative group">
             <Button 
               size="lg" 
-              onClick={handleButtonClick}
-              className="group bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white px-8 py-6 text-lg relative"
+              onClick={handleSubmit}
+              className="group bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white px-8 py-6 text-lg relative whitespace-nowrap"
             >
               Build My{" "}
               <motion.span
@@ -97,6 +103,7 @@ const Hero = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.3 }}
+                className={currentService === "AI Assistant" ? "text-purple-300" : "text-orange-300"}
               >
                 {currentService}
               </motion.span>
@@ -107,30 +114,6 @@ const Hero = () => {
           </div>
         </motion.div>
       </div>
-
-      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <DialogContent className="sm:max-w-md">
-          <DialogHeader>
-            <DialogTitle>Enter Your Phone Number</DialogTitle>
-            <DialogDescription>
-              We'll contact you to discuss building your {currentService.toLowerCase()}.
-            </DialogDescription>
-          </DialogHeader>
-          <div className="grid gap-4 py-4">
-            <PhoneInput
-              country={"us"}
-              value={phoneNumber}
-              onChange={(phone) => setPhoneNumber(phone)}
-              containerClass="w-full"
-              inputClass="w-full p-2 border rounded-md"
-              buttonClass="border rounded-l-md"
-            />
-            <Button onClick={handleSubmit} className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white">
-              Submit
-            </Button>
-          </div>
-        </DialogContent>
-      </Dialog>
     </section>
   );
 };
