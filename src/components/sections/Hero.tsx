@@ -77,9 +77,13 @@ const Hero = () => {
               value={phoneNumber}
               onChange={(phone) => setPhoneNumber(phone)}
               containerClass="w-full"
-              inputClass="!w-full !h-[52px] !text-lg"
+              inputClass="!w-full !h-[52px] !text-lg !placeholder-gray-500"
               buttonClass="!h-[52px]"
               placeholder="Enter your phone number"
+              inputProps={{
+                placeholder: "Enter your phone number",
+                style: { fontSize: '1.125rem', color: '#374151' }
+              }}
             />
           </div>
           
