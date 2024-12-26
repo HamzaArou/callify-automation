@@ -3,10 +3,12 @@ import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "./ui/button";
 import Logo from "./Logo";
+import { useNavigate } from "react-router-dom";
 
 const Nav = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -54,6 +56,7 @@ const Nav = () => {
               <Button 
                 variant="default"
                 size="lg"
+                onClick={() => navigate('/proposal')}
                 className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white"
               >
                 Get a Proposal
@@ -103,6 +106,7 @@ const Nav = () => {
               <Button 
                 className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white"
                 size="lg"
+                onClick={() => navigate('/proposal')}
               >
                 Get a Proposal
               </Button>
