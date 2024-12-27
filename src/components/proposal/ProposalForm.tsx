@@ -123,10 +123,11 @@ const ProposalForm = () => {
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="website">Website</Label>
+        <Label htmlFor="website">Website <span className="text-red-500">*</span></Label>
         <Input
           id="website"
           placeholder="www.example.com"
+          required
           value={formData.website}
           onChange={(e) => setFormData({ ...formData, website: e.target.value })}
         />
@@ -151,8 +152,8 @@ const ProposalForm = () => {
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="timing">Preferred Call Timing / Time Zone</Label>
-        <Select onValueChange={(value) => setFormData({ ...formData, timing: value })}>
+        <Label htmlFor="timing">Preferred Call Timing / Time Zone <span className="text-red-500">*</span></Label>
+        <Select required onValueChange={(value) => setFormData({ ...formData, timing: value })}>
           <SelectTrigger>
             <SelectValue placeholder="Select preferred timing" />
           </SelectTrigger>
@@ -167,8 +168,8 @@ const ProposalForm = () => {
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="crm">Current Data Source / CRM</Label>
-        <Select onValueChange={(value) => setFormData({ ...formData, crm: value })}>
+        <Label htmlFor="crm">Current Data Source / CRM <span className="text-red-500">*</span></Label>
+        <Select required onValueChange={(value) => setFormData({ ...formData, crm: value })}>
           <SelectTrigger>
             <SelectValue placeholder="Select your CRM" />
           </SelectTrigger>
@@ -183,8 +184,8 @@ const ProposalForm = () => {
       </div>
 
       <div className="space-y-2">
-        <Label>Twilio Account</Label>
-        <RadioGroup onValueChange={(value) => setFormData({ ...formData, twilio: value })}>
+        <Label>Twilio Account <span className="text-red-500">*</span></Label>
+        <RadioGroup required onValueChange={(value) => setFormData({ ...formData, twilio: value })}>
           <div className="flex items-center space-x-2">
             <RadioGroupItem value="yes" id="twilio-yes" />
             <Label htmlFor="twilio-yes">Yes</Label>
@@ -197,8 +198,8 @@ const ProposalForm = () => {
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="compliance">Compliance Requirements</Label>
-        <Select onValueChange={(value) => setFormData({ ...formData, compliance: value })}>
+        <Label htmlFor="compliance">Compliance Requirements <span className="text-red-500">*</span></Label>
+        <Select required onValueChange={(value) => setFormData({ ...formData, compliance: value })}>
           <SelectTrigger>
             <SelectValue placeholder="Select compliance requirements" />
           </SelectTrigger>
@@ -213,8 +214,8 @@ const ProposalForm = () => {
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="timeline">Demo & Launch Timeline</Label>
-        <Select onValueChange={(value) => setFormData({ ...formData, timeline: value })}>
+        <Label htmlFor="timeline">Demo & Launch Timeline <span className="text-red-500">*</span></Label>
+        <Select required onValueChange={(value) => setFormData({ ...formData, timeline: value })}>
           <SelectTrigger>
             <SelectValue placeholder="Select preferred timeline" />
           </SelectTrigger>
