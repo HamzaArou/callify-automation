@@ -1,4 +1,4 @@
-import { Search, PuzzlePiece, Rocket } from "lucide-react";
+import { Search, Puzzle, Rocket } from "lucide-react";
 
 const NextSteps = () => {
   return (
@@ -23,7 +23,7 @@ const NextSteps = () => {
         <div className="bg-[#7E5BDC] rounded-xl p-6 text-white">
           <div className="flex items-start gap-4">
             <div className="bg-[#6B47DC]/50 p-3 rounded-lg">
-              <PuzzlePiece className="w-6 h-6" />
+              <Puzzle className="w-6 h-6" />
             </div>
             <div>
               <h3 className="text-xl font-semibold mb-2">Build Your Test Case</h3>
