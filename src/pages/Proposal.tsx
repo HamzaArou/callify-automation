@@ -14,7 +14,7 @@ const Proposal = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Left Column - Form */}
             <div className="bg-white rounded-2xl shadow-xl p-8">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8">Request a FREE Proposal Now!</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">Request Your FREE AI Outbound Caller Now!</h2>
               <ProposalForm />
             </div>
 
