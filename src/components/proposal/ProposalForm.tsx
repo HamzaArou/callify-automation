@@ -184,7 +184,7 @@ const ProposalForm = () => {
       </div>
 
       <div className="space-y-2">
-        <Label>Do you have a twilio account? <span className="text-red-500">*</span></Label>
+        <Label>Do you have a Twilio account? <span className="text-red-500">*</span></Label>
         <RadioGroup required onValueChange={(value) => setFormData({ ...formData, twilio: value })}>
           <div className="flex items-center space-x-2">
             <RadioGroupItem value="yes" id="twilio-yes" />
