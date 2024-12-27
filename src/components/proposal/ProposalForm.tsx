@@ -83,7 +83,7 @@ const ProposalForm = () => {
             <SelectItem value="hospitality">Hospitality & Travel</SelectItem>
             <SelectItem value="utilities">Utilities & Telecom</SelectItem>
             <SelectItem value="government">Government/Public Services</SelectItem>
-            <SelectItem value="professional">Professional Services</SelectItem>
+            <SelectItem value="professional">Professional Services (Law, Accounting, Consulting)</SelectItem>
             <SelectItem value="education">Education</SelectItem>
             <SelectItem value="other">Other</SelectItem>
           </SelectContent>
