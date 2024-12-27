@@ -1,14 +1,14 @@
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
-import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-import FormField from "./form/FormField";
-import SelectField from "./form/SelectField";
+import { useLocation } from "react-router-dom";
+import { useToast } from "@/hooks/use-toast";
 
 const ProposalForm = () => {
   const location = useLocation();
@@ -27,12 +27,15 @@ const ProposalForm = () => {
     crm: "",
     twilio: "",
     compliance: "",
+    callOutcome: "",
+    analytics: "",
     timeline: "",
     comments: ""
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    // Form submission logic here
     console.log("Form submitted:", formData);
     
     toast({
@@ -44,55 +47,61 @@ const ProposalForm = () => {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <FormField
-          id="name"
-          label="Name"
-          required
-          placeholder="John Doe"
-          value={formData.name}
-          onChange={(value) => setFormData({ ...formData, name: value })}
-        />
+        <div className="space-y-2">
+          <Label htmlFor="name">Name <span className="text-red-500">*</span></Label>
+          <Input
+            id="name"
+            placeholder="John Doe"
+            required
+            value={formData.name}
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+          />
+        </div>
 
-        <FormField
-          id="company"
-          label="Company"
-          required
-          placeholder="Example Inc."
-          value={formData.company}
-          onChange={(value) => setFormData({ ...formData, company: value })}
-        />
+        <div className="space-y-2">
+          <Label htmlFor="company">Company <span className="text-red-500">*</span></Label>
+          <Input
+            id="company"
+            placeholder="Example Inc."
+            required
+            value={formData.company}
+            onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+          />
+        </div>
       </div>
 
-      <SelectField
-        id="industry"
-        label="Industry"
-        required
-        placeholder="Select your industry"
-        value={formData.industry}
-        onChange={(value) => setFormData({ ...formData, industry: value })}
-        options={[
-          { value: "healthcare", label: "Healthcare" },
-          { value: "financial", label: "Financial Services" },
-          { value: "retail", label: "Retail/E-commerce" },
-          { value: "hospitality", label: "Hospitality & Travel" },
-          { value: "utilities", label: "Utilities & Telecom" },
-          { value: "government", label: "Government/Public Services" },
-          { value: "professional", label: "Professional Services" },
-          { value: "education", label: "Education" },
-          { value: "other", label: "Other" }
-        ]}
-      />
+      <div className="space-y-2">
+        <Label htmlFor="industry">Industry <span className="text-red-500">*</span></Label>
+        <Select required onValueChange={(value) => setFormData({ ...formData, industry: value })}>
+          <SelectTrigger>
+            <SelectValue placeholder="Select your industry" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="healthcare">Healthcare</SelectItem>
+            <SelectItem value="financial">Financial Services</SelectItem>
+            <SelectItem value="retail">Retail/E-commerce</SelectItem>
+            <SelectItem value="hospitality">Hospitality & Travel</SelectItem>
+            <SelectItem value="utilities">Utilities & Telecom</SelectItem>
+            <SelectItem value="government">Government/Public Services</SelectItem>
+            <SelectItem value="professional">Professional Services (Law, Accounting, Consulting)</SelectItem>
+            <SelectItem value="education">Education</SelectItem>
+            <SelectItem value="other">Other</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <FormField
-          id="email"
-          label="Email"
-          type="email"
-          required
-          placeholder="johndoe@example.com"
-          value={formData.email}
-          onChange={(value) => setFormData({ ...formData, email: value })}
-        />
+        <div className="space-y-2">
+          <Label htmlFor="email">Email <span className="text-red-500">*</span></Label>
+          <Input
+            id="email"
+            type="email"
+            placeholder="johndoe@example.com"
+            required
+            value={formData.email}
+            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+          />
+        </div>
 
         <div className="space-y-2">
           <Label htmlFor="phone">Phone Number <span className="text-red-500">*</span></Label>
@@ -100,6 +109,11 @@ const ProposalForm = () => {
             country={"us"}
             value={formData.phone}
             onChange={(phone) => setFormData({ ...formData, phone })}
+            inputStyle={{
+              width: "100%",
+              height: "40px",
+              fontSize: "16px"
+            }}
             inputProps={{
               required: true,
               placeholder: "(000) 000-0000"
@@ -108,68 +122,70 @@ const ProposalForm = () => {
         </div>
       </div>
 
-      <FormField
-        id="website"
-        label="Website"
-        required
-        placeholder="www.example.com"
-        value={formData.website}
-        onChange={(value) => setFormData({ ...formData, website: value })}
-      />
+      <div className="space-y-2">
+        <Label htmlFor="website">Website <span className="text-red-500">*</span></Label>
+        <Input
+          id="website"
+          placeholder="www.example.com"
+          required
+          value={formData.website}
+          onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+        />
+      </div>
 
-      <SelectField
-        id="useCase"
-        label="Primary Outbound Use Case"
-        required
-        placeholder="Select primary use case"
-        value={formData.useCase}
-        onChange={(value) => setFormData({ ...formData, useCase: value })}
-        options={[
-          { value: "appointments", label: "Appointment Reminders" },
-          { value: "payments", label: "Payment/Invoice Follow-Ups" },
-          { value: "policy", label: "Policy Renewal or Loan Follow-Ups" },
-          { value: "cart", label: "Abandoned Cart / Promotional Offers" },
-          { value: "reservations", label: "Reservation/Travel Confirmations" },
-          { value: "events", label: "Event/Enrollment Follow-Ups" },
-          { value: "other", label: "Other" }
-        ]}
-      />
+      <div className="space-y-2">
+        <Label htmlFor="useCase">Primary Outbound Use Case <span className="text-red-500">*</span></Label>
+        <Select required onValueChange={(value) => setFormData({ ...formData, useCase: value })}>
+          <SelectTrigger>
+            <SelectValue placeholder="Select primary use case" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="appointments">Appointment Reminders</SelectItem>
+            <SelectItem value="payments">Payment/Invoice Follow-Ups</SelectItem>
+            <SelectItem value="policy">Policy Renewal or Loan Follow-Ups</SelectItem>
+            <SelectItem value="cart">Abandoned Cart / Promotional Offers</SelectItem>
+            <SelectItem value="reservations">Reservation/Travel Confirmations</SelectItem>
+            <SelectItem value="events">Event/Enrollment Follow-Ups</SelectItem>
+            <SelectItem value="other">Other</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
 
-      <SelectField
-        id="timing"
-        label="Preferred Call Timing / Time Zone"
-        required
-        placeholder="Select preferred timing"
-        value={formData.timing}
-        onChange={(value) => setFormData({ ...formData, timing: value })}
-        options={[
-          { value: "morning", label: "Morning (9 am–12 pm)" },
-          { value: "afternoon", label: "Afternoon (12 pm–5 pm)" },
-          { value: "evening", label: "Evening (5 pm–9 pm)" },
-          { value: "weekends", label: "Weekends" },
-          { value: "24-7", label: "24/7 Coverage" }
-        ]}
-      />
+      <div className="space-y-2">
+        <Label htmlFor="timing">Preferred Call Timing / Time Zone <span className="text-red-500">*</span></Label>
+        <Select required onValueChange={(value) => setFormData({ ...formData, timing: value })}>
+          <SelectTrigger>
+            <SelectValue placeholder="Select preferred timing" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="morning">Morning (9 am–12 pm)</SelectItem>
+            <SelectItem value="afternoon">Afternoon (12 pm–5 pm)</SelectItem>
+            <SelectItem value="evening">Evening (5 pm–9 pm)</SelectItem>
+            <SelectItem value="weekends">Weekends</SelectItem>
+            <SelectItem value="24-7">24/7 Coverage</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
 
-      <SelectField
-        id="crm"
-        label="Current Data Source / CRM"
-        required
-        placeholder="Select your CRM"
-        value={formData.crm}
-        onChange={(value) => setFormData({ ...formData, crm: value })}
-        options={[
-          { value: "salesforce", label: "Salesforce" },
-          { value: "hubspot", label: "HubSpot" },
-          { value: "sheets", label: "Google Sheets" },
-          { value: "none", label: "None / Custom" },
-          { value: "other", label: "Other" }
-        ]}
-      />
+      <div className="space-y-2">
+        <Label htmlFor="crm">Current Data Source / CRM <span className="text-red-500">*</span></Label>
+        <Select required onValueChange={(value) => setFormData({ ...formData, crm: value })}>
+          <SelectTrigger>
+            <SelectValue placeholder="Select your CRM" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="salesforce">Salesforce</SelectItem>
+            <SelectItem value="hubspot">HubSpot</SelectItem>
+            <SelectItem value="sheets">Google Sheets</SelectItem>
+            <SelectItem value="none">None / Custom</SelectItem>
+            <SelectItem value="other">Other</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
 
       <div className="space-y-2">
         <Label>Twilio Account <span className="text-red-500">*</span></Label>
-        <RadioGroup required value={formData.twilio} onValueChange={(value) => setFormData({ ...formData, twilio: value })}>
+        <RadioGroup required onValueChange={(value) => setFormData({ ...formData, twilio: value })}>
           <div className="flex items-center space-x-2">
             <RadioGroupItem value="yes" id="twilio-yes" />
             <Label htmlFor="twilio-yes">Yes</Label>
@@ -181,36 +197,36 @@ const ProposalForm = () => {
         </RadioGroup>
       </div>
 
-      <SelectField
-        id="compliance"
-        label="Compliance Requirements"
-        required
-        placeholder="Select compliance requirements"
-        value={formData.compliance}
-        onChange={(value) => setFormData({ ...formData, compliance: value })}
-        options={[
-          { value: "hipaa", label: "HIPAA" },
-          { value: "pci", label: "PCI-DSS" },
-          { value: "gdpr", label: "GDPR" },
-          { value: "none", label: "None" },
-          { value: "other", label: "Other" }
-        ]}
-      />
+      <div className="space-y-2">
+        <Label htmlFor="compliance">Compliance Requirements <span className="text-red-500">*</span></Label>
+        <Select required onValueChange={(value) => setFormData({ ...formData, compliance: value })}>
+          <SelectTrigger>
+            <SelectValue placeholder="Select compliance requirements" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="hipaa">HIPAA</SelectItem>
+            <SelectItem value="pci">PCI-DSS</SelectItem>
+            <SelectItem value="gdpr">GDPR</SelectItem>
+            <SelectItem value="none">None</SelectItem>
+            <SelectItem value="other">Other</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
 
-      <SelectField
-        id="timeline"
-        label="Demo & Launch Timeline"
-        required
-        placeholder="Select preferred timeline"
-        value={formData.timeline}
-        onChange={(value) => setFormData({ ...formData, timeline: value })}
-        options={[
-          { value: "asap", label: "ASAP (Within 1 Week)" },
-          { value: "2-4-weeks", label: "Within 2–4 Weeks" },
-          { value: "1-2-months", label: "1–2 Months" },
-          { value: "no-rush", label: "No Rush" }
-        ]}
-      />
+      <div className="space-y-2">
+        <Label htmlFor="timeline">Demo & Launch Timeline <span className="text-red-500">*</span></Label>
+        <Select required onValueChange={(value) => setFormData({ ...formData, timeline: value })}>
+          <SelectTrigger>
+            <SelectValue placeholder="Select preferred timeline" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="asap">ASAP (Within 1 Week)</SelectItem>
+            <SelectItem value="2-4-weeks">Within 2–4 Weeks</SelectItem>
+            <SelectItem value="1-2-months">1–2 Months</SelectItem>
+            <SelectItem value="no-rush">No Rush</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
 
       <div className="space-y-2">
         <Label htmlFor="comments">Comments or Questions</Label>
@@ -219,13 +235,13 @@ const ProposalForm = () => {
           placeholder="Tell us about your specific needs or any questions you have..."
           value={formData.comments}
           onChange={(e) => setFormData({ ...formData, comments: e.target.value })}
-          className="min-h-[100px] bg-white border-gray-200 focus:border-[#6B47DC] focus:ring-[#6B47DC]"
+          className="min-h-[100px]"
         />
       </div>
 
       <Button
         type="submit"
-        className="w-full bg-[#6B47DC] hover:bg-[#5A3DBA] text-white font-medium text-lg h-12 rounded-lg transition-colors"
+        className="w-full bg-purple-600 hover:bg-purple-700 text-white font-medium text-lg h-12"
       >
         Get My Custom AI Proposal
       </Button>
