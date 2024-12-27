@@ -8,10 +8,12 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { useLocation } from "react-router-dom";
+import { useToast } from "@/hooks/use-toast";
 
 const ProposalForm = () => {
   const location = useLocation();
   const initialPhoneNumber = location.state?.phoneNumber || "";
+  const { toast } = useToast();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -35,6 +37,11 @@ const ProposalForm = () => {
     e.preventDefault();
     // Form submission logic here
     console.log("Form submitted:", formData);
+    
+    toast({
+      title: "Success!",
+      description: "We'll be in touch soon!",
+    });
   };
 
   return (

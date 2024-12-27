@@ -20,11 +20,6 @@ const Hero = () => {
       });
       return;
     }
-
-    toast({
-      title: "Success!",
-      description: "We'll be in touch soon!",
-    });
     
     navigate('/proposal', { state: { phoneNumber } });
   };
