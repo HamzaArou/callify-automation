@@ -48,13 +48,6 @@ const NextSteps = () => {
           </div>
         </div>
       </div>
-
-      <div className="flex justify-center gap-8 mt-12">
-        <img src="/amazon-partner.png" alt="Amazon Partner" className="h-16 object-contain" />
-        <img src="/inc5000.png" alt="Inc 5000" className="h-16 object-contain" />
-        <img src="/google-partner.png" alt="Google Partner" className="h-16 object-contain" />
-        <img src="/microsoft-partner.png" alt="Microsoft Partner" className="h-16 object-contain" />
-      </div>
     </div>
   );
 };
